@@ -1,0 +1,34 @@
+package t.a.w;
+import java.sql.*;
+public class MyClass {
+
+	static final String JDBC_Driver="com.mysql.jdbc.Driver";
+	static final String DB_URL="jdbc:mysql://localhost/emp";
+	
+	static final String user="root";
+	static final String pass="";
+	
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		
+		Connection conn=null;
+		Statement stmt=null;
+		
+		Class.forName(JDBC_Driver);
+		
+		System.out.println("Connecting Data base:");
+		
+		conn=DriverManager.getConnection(DB_URL,user,pass);
+		
+		System.out.println("Creating database...");
+		
+		stmt=conn.createStatement();
+		
+		String sql="drop table emp_table";
+		stmt.executeUpdate(sql);
+		System.out.println("Table deleted!!!");
+		 
+		
+
+	}
+
+}
